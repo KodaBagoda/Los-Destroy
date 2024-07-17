@@ -6,11 +6,16 @@ namespace GameNamespace
 {
     class Program
     {
+        static async Task DelayAndClearAsync(int delayMilliseconds)
+        {
+            await Task.Delay(delayMilliseconds);
+            Console.Clear();
+        }
+
         static async Task PrepareConsoleAsync()
         {
             Console.WriteLine("Prepare for the game...");
-            await Task.Delay(3000);
-            Console.Clear();
+            await DelayAndClearAsync(3000);
         }
 
         static async Task IsReadyAsync(bool status)
@@ -18,14 +23,12 @@ namespace GameNamespace
             if (status)
             {
                 Console.WriteLine("System Ready!");
-                await Task.Delay(3000);
-                Console.Clear();
+                await DelayAndClearAsync(3000);
             }
             else
             {
                 Console.WriteLine("*Sparks*  System Shutdown!");
-                await Task.Delay(3000);
-                Console.Clear();
+                await DelayAndClearAsync(3000);
                 Environment.Exit(0);
             }
         }
@@ -33,8 +36,7 @@ namespace GameNamespace
         static async Task StartGameAsync()
         {
             Console.WriteLine("Starting the game...");
-            await Task.Delay(3000);
-            Console.Clear();
+            await DelayAndClearAsync(3000);
         }
 
         static async Task Main(string[] args)
